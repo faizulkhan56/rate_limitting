@@ -15,7 +15,7 @@ const ipRateLimits = {};
 // Your rate-limiting function
 //async function checkRateLimit(ip) {
   function checkRateLimit(ip) {
-    const windowMs = 10000; // 1 second window
+    const windowMs = 10000; // 10 second window
     const maxRequests = 2; // Maximum requests per window
   
     // Initialize ipRateLimits if it's undefined
@@ -42,6 +42,7 @@ const ipRateLimits = {};
   
   function rateLimitMiddleware(req, res, next) {
     const clientIP = req.ip; // Assuming Express's req.ip to get the client's IP
+    console.log(clientIP)
     const result = checkRateLimit(clientIP);
     console.log(result);
     try {
